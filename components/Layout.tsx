@@ -18,7 +18,7 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
     <>
       <View container>
         <Stack direction='row' flex='center' top={5}>
-          <Stack direction='column' widthPhone={25} width={30} widthTablet={20}>
+          <Stack direction='column' widthPhone={10} width={30} widthTablet={20}>
             <Link href='/'>
               <a>
                 <Element
@@ -33,12 +33,9 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
                   <Image alt='' height={30} src='/logo.png' width={30} />
                   <Text
                     as='h4'
-                    inline='auto'
                     css={{
+                      hiddenInline: 'phone',
                       fontWeight: 'bold',
-                      phone: {
-                        fontSize: '$small',
-                      },
                     }}>
                     Threes
                   </Text>
@@ -46,15 +43,15 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
               </a>
             </Link>
           </Stack>
-          <Stack direction='column' align='center' width={40} widthPhone={50} widthTablet={50}>
+          <Stack direction='column' align='center' width={40} widthPhone={55} widthTablet={50}>
             <Text
               as='h5'
               css={{
                 opacity: router.pathname === '/' ? 0.66 : 1,
               }}
-              inline={5}>
+              inline={4}>
               <Link href='/'>
-                <a>Projects</a>
+                <a>Index</a>
               </Link>
             </Text>
             <Text
@@ -62,7 +59,7 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
               css={{
                 opacity: router.pathname === '/votes' ? 0.66 : 1,
               }}
-              inline={5}>
+              inline={4}>
               <Link href='/votes'>
                 <a>Votes</a>
               </Link>
@@ -72,7 +69,7 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
               css={{
                 opacity: router.pathname === '/saved' ? 0.66 : 1,
               }}
-              inline={5}>
+              inline={4}>
               <Link href='/saved'>
                 <a>Saved</a>
               </Link>
@@ -82,7 +79,7 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
                 display: 'inline-block',
                 hidden: 'phone',
               }}>
-              <Text as='h5' inline={5}>
+              <Text as='h5' inline={4}>
                 <a href='https://twitter.com/threesdev?utm_source=threes.dev' target='_blank' rel='noreferrer'>
                   Twitter
                 </a>
@@ -94,7 +91,7 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
               </Text>
             </Element>
           </Stack>
-          <Stack direction='column' align='right' width={30} widthPhone={25} widthTablet={30}>
+          <Stack direction='column' align='right' width={30} widthPhone={35} widthTablet={30}>
             <Submit />
             <ConnectWrapper />
           </Stack>
