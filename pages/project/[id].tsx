@@ -43,9 +43,9 @@ export default function DynamicProject(): JSX.Element {
           </Stack>
         ) : error || (data && !data.length) ? (
           <Stack direction='row'>
-            <Stack direction='row' align='center'>
+            <Stack direction='column' align='center'>
               <Text as='h1'>🫠</Text>
-              <Badge theme='red'>There was an error fetching this project. Please try again later.</Badge>
+              <Badge theme='red'>There was an error fetching this project. It may not exist.</Badge>
             </Stack>
           </Stack>
         ) : (
