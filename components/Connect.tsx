@@ -36,7 +36,7 @@ export function Connect(): JSX.Element {
         trigger={
           <Button solid aria-label='Connect'>
             <Text as='span' css={{ hiddenInline: 'phone' }}>
-              {ens?.data ? ens.data : data?.address ? address : 'Connected'}
+              {ens?.data ? ens.data : data?.address ? address : null}
             </Text>
             <Text as='span' css={{ visible: 'phone' }}>
               <UserCircle weight='duotone' />
@@ -44,7 +44,7 @@ export function Connect(): JSX.Element {
           </Button>
         }>
         <Text as='h3' inline={4}>
-          {ens?.data ? ens.data : data?.address ? address : 'Connected'}
+          {ens?.data ? ens.data : data?.address ? address : null}
         </Text>
         <Text as='h6'>{ens?.data && address}</Text>
         <Divider
