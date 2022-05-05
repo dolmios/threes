@@ -45,31 +45,20 @@ export function Submit(): JSX.Element {
       <Text as='h3'>Contribute to Threes</Text>
       <Divider bottom={5} top={4} />
       {data ? (
-        <>
-          <Input
-            error={submissionConfirmation === 'error'}
-            onChange={handleChange}
-            placeholder='Enter the project URL'
-            submit='Submit'
-            submitFunction={handleSubmit}
-            submitValid={reg.test(submissionValue)}
-            success={submissionConfirmation === 'success'}
-            warning={submissionConfirmation === 'unknown'}>
-            Open Submissions
-          </Input>
-
-          {submissionConfirmation && (
-            <Element top={5}>
-              {submissionConfirmation === 'error' ? (
-                <Badge theme='red'>There was an error, please try again later.</Badge>
-              ) : submissionConfirmation === 'success' ? (
-                <Badge theme='green'>Thanks for your contribution, we will review it shortly.</Badge>
-              ) : (
-                <Badge theme='orange'>Unknown error 🫣</Badge>
-              )}
-            </Element>
-          )}
-        </>
+        <Input
+          error={submissionConfirmation === 'error'}
+          errorMessage='There was an error.'
+          onChange={handleChange}
+          placeholder='Enter the project URL'
+          submit='Submit'
+          submitFunction={handleSubmit}
+          submitValid={reg.test(submissionValue)}
+          success={submissionConfirmation === 'success'}
+          successMessage='Thanks for sharing!'
+          warning={submissionConfirmation === 'unknown'}
+          warningMessage=' 🫣 There was a problem.'>
+          Open Submissions
+        </Input>
       ) : (
         <Element>
           <Badge theme='orange'>You must be logged in to submit a project.</Badge>

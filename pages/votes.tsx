@@ -35,6 +35,7 @@ export default function Votes(): JSX.Element {
                 inline={4}>
                 Filtered by{' '}
                 <Text
+                  inline={'auto'}
                   as='span'
                   css={{
                     textTransform: 'capitalize',

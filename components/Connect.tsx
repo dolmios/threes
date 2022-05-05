@@ -1,4 +1,4 @@
-import { Badge, Button, Dialog, Divider, Text, Element, Loading } from '@threesdev/ds';
+import { Badge, Button, Dialog, Divider, Text, Element } from '@threesdev/ds';
 import { UserCircle, Wallet as WalletIcon } from 'phosphor-react';
 import { useState } from 'react';
 import { useConnect, useAccount, useEnsName, useDisconnect } from 'wagmi';
@@ -24,7 +24,6 @@ export function Connect(): JSX.Element {
 
   const ens = useEnsName({ address: data?.address });
   const address = useTruncate(data?.address || '');
-  const display = ens ? ens.data || data?.address : undefined;
 
   if (!isMounted) {
     return null as any;
@@ -37,7 +36,7 @@ export function Connect(): JSX.Element {
         trigger={
           <Button solid aria-label='Connect'>
             <Text as='span' css={{ hiddenInline: 'phone' }}>
-              {display}
+              {ens?.data ? ens.data : data?.address ? address : 'Connected'}
             </Text>
             <Text as='span' css={{ visible: 'phone' }}>
               <UserCircle weight='duotone' />
@@ -45,7 +44,7 @@ export function Connect(): JSX.Element {
           </Button>
         }>
         <Text as='h3' inline={4}>
-          {display !== undefined ? <>{display}</> : <Loading />}
+          {ens?.data ? ens.data : data?.address ? address : 'Connected'}
         </Text>
         <Text as='h6'>{ens?.data && address}</Text>
         <Divider

@@ -15,7 +15,6 @@ export default function Home(): JSX.Element {
         <Stack direction='row' flex='center'>
           <Stack direction='column' align='center' offset={20} width={60} widthLaptop={90} offsetLaptop={5} widthTablet={90} offsetTablet={5}>
             <Text as='h1'>Bringing together the finest and most user-friendly projects in web3 to inspire those building the next thing. </Text>
-            <Badge>Pagination coming soon, we are currently in beta.</Badge>
           </Stack>
         </Stack>
       </View>
@@ -38,13 +37,14 @@ export default function Home(): JSX.Element {
           ) : (
             data.map((project: any) => {
               return (
-                <Stack direction='column' key={project.id} width={25} widthTablet={50} widthWide={20} widthPhone={50} bottom={6}>
+                <Stack direction='column' key={project.id} width={25} widthTablet={50} widthWide={20} bottom={6}>
                   <Box
                     image={`https://${process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT}/storage/v1/object/public/projects/${project.id}.png`}
                     imageAlt={project.name || ''}
                     imageHeight={'17.420rem'}
                     imageCTA={`/project/${project.id}`}
-                    imageTarget='_self'>
+                    imageTarget='_self'
+                    imagePosition='top'>
                     <Element flexduo>
                       <Element>
                         <Text as='h4'>

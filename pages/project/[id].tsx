@@ -22,7 +22,17 @@ export default function DynamicProject(): JSX.Element {
 
   return (
     <>
-      <NextSeo title={data?.[0]?.name || 'Project'} />
+      <NextSeo
+        title={data?.[0]?.name || 'Project'}
+        openGraph={{
+          images: [
+            {
+              url: `https://${process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT}/storage/v1/object/public/projects/${router?.query?.id}.png` || 'https://threes.dev/meta.jpg',
+              alt: data?.[0]?.name || 'Project',
+            },
+          ],
+        }}
+      />
 
       <View container top={7} bottom={8}>
         {!data ? (
@@ -107,6 +117,7 @@ export default function DynamicProject(): JSX.Element {
                       src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT}/storage/v1/object/public/projects/${project.id}.png`}
                       layout='fill'
                       objectFit='cover'
+                      objectPosition='top'
                       borderRadius={2}
                       alt=''
                     />
@@ -282,6 +293,7 @@ export default function DynamicProject(): JSX.Element {
                       src={`https://${process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT}/storage/v1/object/public/projects/${project.id}.png`}
                       layout='fill'
                       objectFit='cover'
+                      objectPosition='top'
                       borderRadius={2}
                       alt=''
                     />

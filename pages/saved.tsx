@@ -47,6 +47,7 @@ export default function Votes(): JSX.Element {
                   imageAlt={project.name || ''}
                   imageCTA={`/project/${project.id}`}
                   imageTarget='_self'
+                  imagePosition='top'
                   imageHeight='13.33rem'>
                   <Element flexduo>
                     <Element>
