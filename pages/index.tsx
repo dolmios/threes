@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import { Vote } from '../components';
 
 export default function Home(): JSX.Element {
-  const { data, error } = useSWR(`/projects/?order=id.desc&limit=50`);
+  const { data, error } = useSWR(`/projects/?order=id.desc`);
 
   return (
     <>

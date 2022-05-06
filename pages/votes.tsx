@@ -11,7 +11,7 @@ import { useTruncate } from '../hooks/useTruncate';
 
 export default function Votes(): JSX.Element {
   const [filter, setFilter] = useState('all' as 'all' | 'finance' | 'privacy' | 'data' | 'infrastructure' | 'community' | 'nfts');
-  const { data, error } = useSWR(filter === 'all' ? '/projects?order=votes.desc.nullslast&limit=50' : `/projects/?category=eq.${filter}&order=votes.desc&limit=50`);
+  const { data, error } = useSWR(filter === 'all' ? '/projects?order=votes.desc.nullslast' : `/projects/?category=eq.${filter}&order=votes.desc`);
 
   return (
     <>

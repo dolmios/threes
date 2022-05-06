@@ -1,6 +1,6 @@
 import { Badge, Button, Dialog, Divider, Text, Element } from '@threesdev/ds';
 import { UserCircle, Wallet as WalletIcon } from 'phosphor-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useConnect, useAccount, useEnsName, useDisconnect } from 'wagmi';
 
 import { useMount, useTruncate } from '../hooks';
@@ -9,7 +9,11 @@ export function Connect(): JSX.Element {
   const isMounted = useMount();
 
   const { data } = useAccount();
+  const address = useTruncate(data?.address || '');
+  const { data: ens } = useEnsName({ address: data?.address });
+
   const [isConnected, setIsConnected] = useState(data !== null);
+  const [displayName, setDisplayName] = useState(undefined as undefined | string);
 
   const disconnect = useDisconnect({
     onSuccess: () => {
@@ -22,21 +26,26 @@ export function Connect(): JSX.Element {
     },
   });
 
-  const ens = useEnsName({ address: data?.address });
-  const address = useTruncate(data?.address || '');
+  useEffect(() => {
+    if (ens) {
+      setDisplayName(ens);
+    } else if (address) {
+      setDisplayName(address);
+    }
+  }, [address, ens]);
 
   if (!isMounted) {
     return null as any;
   }
 
-  if (isConnected) {
+  if (isConnected && displayName) {
     return (
       <Dialog
         key={data?.address || Math.random()}
         trigger={
           <Button solid aria-label='Connect'>
             <Text as='span' css={{ hiddenInline: 'phone' }}>
-              {ens?.data ? ens.data : data?.address ? address : null}
+              {displayName}
             </Text>
             <Text as='span' css={{ visible: 'phone' }}>
               <UserCircle weight='duotone' />
@@ -44,9 +53,9 @@ export function Connect(): JSX.Element {
           </Button>
         }>
         <Text as='h3' inline={4}>
-          {ens?.data ? ens.data : data?.address ? address : null}
+          {displayName}
         </Text>
-        <Text as='h6'>{ens?.data && address}</Text>
+        <Text as='h6'>{ens && address}</Text>
         <Divider
           bottom={5}
           top={4}

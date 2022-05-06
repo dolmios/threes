@@ -47,16 +47,16 @@ export function Submit(): JSX.Element {
       {data ? (
         <Input
           error={submissionConfirmation === 'error'}
-          errorMessage='There was an error.'
+          errorMessage='Error'
           onChange={handleChange}
           placeholder='Enter the project URL'
           submit='Submit'
           submitFunction={handleSubmit}
           submitValid={reg.test(submissionValue)}
           success={submissionConfirmation === 'success'}
-          successMessage='Thanks for sharing!'
+          successMessage='Submitted!'
           warning={submissionConfirmation === 'unknown'}
-          warningMessage=' 🫣 There was a problem.'>
+          warningMessage='Error'>
           Open Submissions
         </Input>
       ) : (
