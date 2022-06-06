@@ -1,6 +1,6 @@
-# index
+# threes
 
-✴︎ the actual thing
+Bringing together the finest and most user-friendly projects in web3 to inspire those building the next thing.
 
 ### Develop
 
