@@ -36,9 +36,14 @@
   },
   "homepage": "https://github.com/dolmios/threes#readme",
   "keywords": [
+    "design-system",
+    "nextjs",
+    "react",
     "stitches",
     "supabase",
     "threes",
+    "typescript",
+    "ui",
     "wagmi",
     "web3"
   ],
