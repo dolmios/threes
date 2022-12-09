@@ -1,9 +1,9 @@
-import { Badge, Button, Dialog, Divider, Text, Element } from '@threesdev/ds';
 import { UserCircle, Wallet as WalletIcon } from 'phosphor-react';
 import { useState, useEffect } from 'react';
 import { useConnect, useAccount, useEnsName, useDisconnect } from 'wagmi';
 
 import { useMount, useTruncate } from '../hooks';
+import { Badge, Button, Dialog, Divider, Text, Element } from '../ui';
 
 export function Connect(): JSX.Element {
   const isMounted = useMount();
@@ -97,7 +97,12 @@ export function Connect(): JSX.Element {
       <Divider bottom={5} top={4} />
 
       {connectors.map((x, index) => (
-        <Button aria-label={x.name || 'Connect Wallet'} disabled={isMounted ? !x.ready : false} key={index} onClick={(): any => connect(x)} inline={4}>
+        <Button
+          aria-label={x.name || 'Connect Wallet'}
+          disabled={isMounted ? !x.ready : false}
+          key={index}
+          onClick={(): any => connect(x)}
+          inline={4}>
           {x.name && isMounted ? x.name : null}
         </Button>
       ))}

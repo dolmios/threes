@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Provider } from '@threesdev/ds';
+import { Analytics } from '@vercel/analytics/react';
 import { providers } from 'ethers';
 import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
@@ -11,6 +11,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 
 import { Layout } from '../components';
 import { useFetcher } from '../hooks';
+import { Provider } from '../ui';
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const fetcher = useFetcher;
@@ -80,6 +81,7 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
               <Component {...pageProps} />
             </Layout>
           </SWRConfig>
+          <Analytics />
         </Provider>
       </WagmiProvider>
     </>

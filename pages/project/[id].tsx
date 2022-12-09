@@ -1,4 +1,3 @@
-import { Badge, Box, breakpoints, Button, Element, Image, Loading, Stack, Text, View } from '@threesdev/ds';
 import dayjs from 'dayjs';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
@@ -8,6 +7,7 @@ import { useEnsName } from 'wagmi';
 
 import { Vote } from '../../components';
 import { useTruncate } from '../../hooks';
+import { Badge, Box, breakpoints, Button, Element, Image, Loading, Stack, Text, View } from '../../ui';
 
 export default function DynamicProject(): JSX.Element {
   const router = useRouter();
@@ -27,8 +27,8 @@ export default function DynamicProject(): JSX.Element {
         openGraph={{
           images: [
             {
-              url: `https://${process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT}/storage/v1/object/public/projects/${router?.query?.id}.png` || 'https://threes.dev/meta.jpg',
               alt: data?.[0]?.name || 'Project',
+              url: `https://${process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT}/storage/v1/object/public/projects/${router?.query?.id}.png` || 'https://threes.dev/meta.jpg',
             },
           ],
         }}

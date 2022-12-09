@@ -1,9 +1,9 @@
-import { Stack, Text, View, Badge, Box, Loading, Element } from '@threesdev/ds';
 import dayjs from 'dayjs';
 import { NextSeo } from 'next-seo';
 import useSWR from 'swr';
 
 import { Vote } from '../components';
+import { Stack, Text, View, Badge, Box, Loading, Element } from '../ui';
 
 export default function Home(): JSX.Element {
   const { data, error } = useSWR(`/projects/?order=id.desc`);

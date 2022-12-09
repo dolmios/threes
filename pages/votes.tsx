@@ -1,17 +1,56 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Badge, Box, Button, Dialog, Divider, Element, Loading, Stack, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Text, View } from '@threesdev/ds';
 import dayjs from 'dayjs';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import { ArrowUpRight, CurrencyEth, Lock, Database, TreeStructure, Buildings, GameController, Question } from 'phosphor-react';
+import {
+  ArrowUpRight,
+  CurrencyEth,
+  Lock,
+  Database,
+  TreeStructure,
+  Buildings,
+  GameController,
+  Question,
+} from 'phosphor-react';
 import { useState } from 'react';
 import useSWR from 'swr';
 
 import { useTruncate } from '../hooks/useTruncate';
+import {
+  Badge,
+  Box,
+  Button,
+  Dialog,
+  Divider,
+  Element,
+  Loading,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeadCell,
+  TableRow,
+  Text,
+  View,
+} from '../ui';
 
 export default function Votes(): JSX.Element {
-  const [filter, setFilter] = useState('all' as 'all' | 'finance' | 'privacy' | 'data' | 'infrastructure' | 'community' | 'nfts');
-  const { data, error } = useSWR(filter === 'all' ? '/projects?order=votes.desc.nullslast' : `/projects/?category=eq.${filter}&order=votes.desc`);
+  const [filter, setFilter] = useState(
+    'all' as
+      | 'all'
+      | 'finance'
+      | 'privacy'
+      | 'data'
+      | 'infrastructure'
+      | 'community'
+      | 'nfts'
+  );
+  const { data, error } = useSWR(
+    filter === 'all'
+      ? '/projects?order=votes.desc.nullslast'
+      : `/projects/?category=eq.${filter}&order=votes.desc`
+  );
 
   return (
     <>
@@ -57,12 +96,16 @@ export default function Votes(): JSX.Element {
           ) : error ? (
             <Stack direction='column' align='center'>
               <Text as='h1'>🫠</Text>
-              <Badge theme='red'>There was an error fetching projects. Please try again later.</Badge>
+              <Badge theme='red'>
+                There was an error fetching projects. Please try again later.
+              </Badge>
             </Stack>
           ) : data && !data.length ? (
             <Stack direction='column' align='center'>
               <Text as='h1'>🧃</Text>
-              <Badge theme='purple'>There are no projects (yet) for the {filter} category.</Badge>
+              <Badge theme='purple'>
+                There are no projects (yet) for the {filter} category.
+              </Badge>
             </Stack>
           ) : (
             <Stack direction='column'>
@@ -102,7 +145,11 @@ export default function Votes(): JSX.Element {
                           </Link>
                         </TableCell>
                         <TableCell>
-                          <a style={{ display: 'block' }} href={`https://${project.website}?utm_source=threes.dev`} target='_blank' rel='noreferrer'>
+                          <a
+                            style={{ display: 'block' }}
+                            href={`https://${project.website}?utm_source=threes.dev`}
+                            target='_blank'
+                            rel='noreferrer'>
                             {project.website}
                             &nbsp;
                             <ArrowUpRight />
@@ -141,7 +188,11 @@ export default function Votes(): JSX.Element {
                                 <Question weight='duotone' />
                               )
                             }
-                            onClick={(): void => setFilter(filter === project.category ? 'all' : project.category)}
+                            onClick={(): void =>
+                              setFilter(
+                                filter === project.category ? 'all' : project.category
+                              )
+                            }
                             theme={
                               project.category === 'finance'
                                 ? 'green'
@@ -161,8 +212,15 @@ export default function Votes(): JSX.Element {
                           </Badge>
                         </TableCell>
                         <TableCell>
-                          {project.votes && project.votes >= 1 && project.voters !== '[]' ? (
-                            <Dialog trigger={<Element css={{ cursor: 'pointer' }}>{project.votes}</Element>}>
+                          {project.votes &&
+                          project.votes >= 1 &&
+                          project.voters !== '[]' ? (
+                            <Dialog
+                              trigger={
+                                <Element css={{ cursor: 'pointer' }}>
+                                  {project.votes}
+                                </Element>
+                              }>
                               <Text as='h3' inline={4}>
                                 Voters
                               </Text>
@@ -170,7 +228,10 @@ export default function Votes(): JSX.Element {
                               <Divider bottom={5} top={4} />
                               {project.voters.map((voter: any) => (
                                 <Badge inline={4} key={voter}>
-                                  <a target='_blank' href={`https://etherscan.io/address/${voter}?utm_source=threes.dev`} rel='noreferrer'>
+                                  <a
+                                    target='_blank'
+                                    href={`https://etherscan.io/address/${voter}?utm_source=threes.dev`}
+                                    rel='noreferrer'>
                                     {useTruncate(voter)}
                                   </a>
                                 </Badge>

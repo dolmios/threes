@@ -2,7 +2,7 @@
 
 const nextConfig = {
   images: {
-    domains: ['minimal.gallery', process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT],
+    domains: ['minimal.gallery', `${process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT}`],
   },
 
   reactStrictMode: true,

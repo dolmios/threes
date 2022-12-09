@@ -1,9 +1,10 @@
-import { Element, Stack, Text, View, Badge, ProviderToggle } from '@threesdev/ds';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Heartbeat } from 'phosphor-react';
 import { ReactNode } from 'react';
+
+import { Element, Stack, Text, View, Badge, ProviderToggle } from '../ui';
 
 import { Submit, Connect } from './';
 
@@ -34,8 +35,8 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
                   <Text
                     as='h4'
                     css={{
-                      hiddenInline: 'phone',
                       fontWeight: 'bold',
+                      hiddenInline: 'phone',
                     }}>
                     Threes
                   </Text>
@@ -43,7 +44,12 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
               </a>
             </Link>
           </Stack>
-          <Stack direction='column' align='center' width={40} widthPhone={55} widthTablet={50}>
+          <Stack
+            direction='column'
+            align='center'
+            width={40}
+            widthPhone={55}
+            widthTablet={50}>
             <Text
               as='h5'
               css={{
@@ -80,18 +86,29 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
                 hidden: 'phone',
               }}>
               <Text as='h5' inline={4}>
-                <a href='https://twitter.com/threesdev?utm_source=threes.dev' target='_blank' rel='noreferrer'>
+                <a
+                  href='https://twitter.com/threesdev?utm_source=threes.dev'
+                  target='_blank'
+                  rel='noreferrer'>
                   Twitter
                 </a>
               </Text>
               <Text as='h5' inline='auto'>
-                <a href='https://github.com/threesdev?utm_source=threes.dev' target='_blank' rel='noreferrer'>
+                <a
+                  href='https://github.com/threesdev?utm_source=threes.dev'
+                  target='_blank'
+                  rel='noreferrer'>
                   Github
                 </a>
               </Text>
             </Element>
           </Stack>
-          <Stack direction='column' align='right' width={30} widthPhone={35} widthTablet={30}>
+          <Stack
+            direction='column'
+            align='right'
+            width={30}
+            widthPhone={35}
+            widthTablet={30}>
             <Submit />
             <ConnectWrapper />
           </Stack>
@@ -116,7 +133,10 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
                 </a>
                 <Text as='h6' bold inline='auto'>
                   a project by{' '}
-                  <a href='https://twitter.com/d0lmios?utm_source=threes.dev' target='_blank' rel='noreferrer'>
+                  <a
+                    href='https://twitter.com/d0lmios?utm_source=threes.dev'
+                    target='_blank'
+                    rel='noreferrer'>
                     dolmios
                   </a>
                 </Text>

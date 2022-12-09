@@ -1,7 +1,7 @@
 export async function useFetcher(path: RequestInfo): Promise<any> {
   const res = await fetch(path, {
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
   });

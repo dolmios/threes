@@ -1,17 +1,24 @@
 import { createClient } from '@supabase/supabase-js';
-import { Badge, Button, Divider, Element, Input, Text, Dialog } from '@threesdev/ds';
 import { PlusCircle } from 'phosphor-react';
 import { useState } from 'react';
 import { useAccount } from 'wagmi';
 
+import { Badge, Button, Divider, Element, Input, Text, Dialog } from '../ui';
+
 export function Submit(): JSX.Element {
   const [submissionValue, setSubmissionValue] = useState('');
-  const [submissionConfirmation, setSubmissionConfirmation] = useState(null as null | string);
+  const [submissionConfirmation, setSubmissionConfirmation] = useState(
+    null as null | string
+  );
   const { data } = useAccount();
 
-  const supabase = createClient(`https://${process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT}`, process.env.NEXT_PUBLIC_SUPABASE_PUBLIC_KEY as string);
+  const supabase = createClient(
+    `https://${process.env.NEXT_PUBLIC_SUPABASE_ENDPOINT}`,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLIC_KEY as string
+  );
 
-  const reg = /[-a-zA-Z0-9@:%._\\+~#=]{1,256}\.[a-zA-Z0-9()]{1,256}\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?/gi;
+  const reg =
+    /[-a-zA-Z0-9@:%._\\+~#=]{1,256}\.[a-zA-Z0-9()]{1,256}\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?/gi;
 
   function handleChange(e: any): void {
     setSubmissionValue(e.target.value);
@@ -19,7 +26,9 @@ export function Submit(): JSX.Element {
   }
 
   async function handleSubmit(): Promise<void> {
-    const { data: submitData, error: submitError } = await supabase.from('submissions').upsert({ submitted_by: data?.address || 'N/A', website: submissionValue });
+    const { data: submitData, error: submitError } = await supabase
+      .from('submissions')
+      .upsert({ submitted_by: data?.address || 'N/A', website: submissionValue });
 
     if (submitError) {
       setSubmissionConfirmation('error');
