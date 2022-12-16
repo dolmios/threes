@@ -1,5 +1,4 @@
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
-import Script from 'next/script';
 import React, { ReactElement } from 'react';
 
 import { getCssText } from '../ui';
@@ -22,7 +21,6 @@ export default class Document extends NextDocument {
         <body>
           <Main />
           <NextScript />
-          <Script defer strategy='beforeInteractive' src='https://api.pirsch.io/pirsch.js' id='pirschjs' data-code='DX4vXXr8vANkKbnTprdldUzj0VVjn2B5' />
         </body>
       </Html>
     );

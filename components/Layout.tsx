@@ -125,24 +125,15 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
           }}>
           <View container bottom={5}>
             <Stack direction='row' flex='center'>
-              <Stack direction='column' width={80} widthPhone={80}>
+              <Stack direction='column' width={60} widthPhone={70}>
                 <a href='https://www.buymeacryptocoffee.xyz/threesdev.eth?utm_source=threes.dev'>
-                  <Badge inline={3} icon={<Heartbeat weight='duotone' />}>
+                  <Badge icon={<Heartbeat weight='duotone' />}>
                     threesdev.eth
                   </Badge>
                 </a>
-                <Text as='h6' bold inline='auto'>
-                  a project by{' '}
-                  <a
-                    href='https://twitter.com/d0lmios?utm_source=threes.dev'
-                    target='_blank'
-                    rel='noreferrer'>
-                    dolmios
-                  </a>
-                </Text>
               </Stack>
 
-              <Stack direction='column' align='right' width={20} widthPhone={20}>
+              <Stack direction='column' align='right' width={40} widthPhone={30}>
                 <ProviderToggle />
               </Stack>
             </Stack>
